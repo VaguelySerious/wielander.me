@@ -1,4 +1,4 @@
-const config = require('./.contentful.json')
+const config = require('./contentful.json')
 const contentful = require('contentful')
 
 const client = contentful.createClient({
@@ -11,18 +11,14 @@ export default {
   target: 'static',
 
   generate: {
+    fallback: true,
     routes: () =>
       client
         .getEntries({
           content_type: config.CTF_BLOG_POST_TYPE_ID,
           order: '-sys.createdAt',
         })
-        .then((entries) =>
-          entries.items.map(
-            (e) => `/posts/${e.sys.id}`
-            // (e) => `/posts/${e.fields.publishDate}-${e.fields.title}`
-          )
-        ),
+        .then((entries) => entries.items.map((e) => `/posts/${e.fields.slug}`)),
   },
 
   env: {

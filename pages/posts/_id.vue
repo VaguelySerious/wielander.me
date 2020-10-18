@@ -1,5 +1,7 @@
 <template>
-  <div class="container"></div>
+  <div class="container">
+    <h1>{{ post.fields.title }}</h1>
+  </div>
 </template>
 
 <script lang="ts">
@@ -10,14 +12,19 @@ import { BlogPost } from '../../assets/types'
 const client = createClient()
 
 export default {
-  asyncData({ env, route }: any) {
-    return Promise.all([client.getEntry(route.params.id)])
-      .then(([post]) => {
-        return {
-          post: post as Entry<BlogPost>,
-        }
-      })
-      .catch(console.error)
+  asyncData({ env, route, error }: any) {
+    return Promise.all([
+      client.getEntries({
+        content_type: env.CTF_BLOG_POST_TYPE_ID,
+        'fields.slug': route.params.id,
+      }),
+    ]).then(([posts]) => {
+      const post = posts.items[0] as Entry<BlogPost>
+      if (!post) {
+        throw new Error('Post not available')
+      }
+      return { post }
+    })
   },
 }
 </script>

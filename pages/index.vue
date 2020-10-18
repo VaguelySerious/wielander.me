@@ -14,7 +14,9 @@
       </div>
       <ul>
         <li v-for="post in posts">
-          {{ post.fields.title }}
+          <nuxt-link :to="'/posts/' + post.fields.slug">
+            {{ post.fields.title }}
+          </nuxt-link>
         </li>
       </ul>
     </div>
@@ -38,13 +40,11 @@ export default {
         content_type: env.CTF_BLOG_POST_TYPE_ID,
         order: '-sys.createdAt',
       }),
-    ])
-      .then(([posts]) => {
-        return {
-          posts: posts.items as Entry<BlogPost>[],
-        }
-      })
-      .catch(console.error)
+    ]).then(([posts]) => {
+      return {
+        posts: posts.items as Entry<BlogPost>[],
+      }
+    })
   },
 }
 </script>
@@ -59,8 +59,7 @@ export default {
   text-align: center
 
 .title
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif
+  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif
   display: block
   font-weight: 300
   font-size: 100px
