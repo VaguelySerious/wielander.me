@@ -1,0 +1,32 @@
+@import './colors'
+
+.loader
+  position: fixed
+  display: flex
+  align-items: center
+  justify-content: center
+  top: 0
+  right: 0
+  left: 0
+  bottom: 0
+  background-color: $color-bg
+  transition: 0.4s ease
+
+  .loaded &
+    opacity: 0
+    visibility: hidden
+
+  &::after
+    content: ''
+    position: absolute
+    width: 10vmin
+    height: 10vmin
+    border: 5px solid transparent
+    border-left-color: $color-blue
+    border-radius: 50%
+
+    animation: rotation 1s infinite linear
+
+@keyframes rotation
+  100%
+    transform: rotate(360deg)

@@ -18,7 +18,11 @@ export default {
           content_type: config.CTF_BLOG_POST_TYPE_ID,
           order: '-sys.createdAt',
         })
-        .then((entries) => entries.items.map((e) => `/posts/${e.fields.slug}`)),
+        .then((entries) =>
+          entries.items
+            .filter((e) => e.fields.body)
+            .map((e) => `/posts/${e.fields.slug}`)
+        ),
   },
 
   env: {
@@ -29,7 +33,7 @@ export default {
 
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
-    title: "Peter's Blog",
+    title: 'Peter Wielander',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },

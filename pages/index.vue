@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div>
-      <h1 class="title">Peter's Blog</h1>
+      <h1 class="title">Peter Wielander</h1>
       <div class="links">
         <a
           href="https://github.com/VaguelySerious/wielander.me"
@@ -14,9 +14,7 @@
       </div>
       <ul>
         <li v-for="post in posts">
-          <nuxt-link :to="'/posts/' + post.fields.slug">
-            {{ post.fields.title }}
-          </nuxt-link>
+          <Project :project="post" />
         </li>
       </ul>
     </div>
@@ -24,12 +22,12 @@
 </template>
 
 <script lang="ts">
-// import Vue from 'vue'
-// export default Vue.extend({})
-
+import Vue from 'vue'
 import { Entry } from 'contentful'
 import { createClient } from '../plugins/contentful'
 import { BlogPost } from '../assets/types'
+// @ts-ignore
+import Project from '../components/Project'
 
 const client = createClient()
 
@@ -39,6 +37,8 @@ export default {
       client.getEntries({
         content_type: env.CTF_BLOG_POST_TYPE_ID,
         order: '-sys.createdAt',
+        // select:
+        //   'sys.id,fields.title,fields.slug,fields.description,fields.publishDate,fields.thumbImage,fields.tags,fields.githubUrl,fields.projectUrl',
       }),
     ]).then(([posts]) => {
       return {
@@ -49,30 +49,4 @@ export default {
 }
 </script>
 
-<style lang="sass">
-.container
-  margin: 0 auto
-  min-height: 100vh
-  display: flex
-  justify-content: center
-  align-items: center
-  text-align: center
-
-.title
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif
-  display: block
-  font-weight: 300
-  font-size: 100px
-  color: #35495e
-  letter-spacing: 1px
-
-.subtitle
-  font-weight: 300
-  font-size: 42px
-  color: #526488
-  word-spacing: 5px
-  padding-bottom: 15px
-
-.links
-  padding-top: 15px
-</style>
+<style lang="sass"></style>
