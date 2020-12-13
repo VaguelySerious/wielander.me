@@ -1,18 +1,7 @@
 <template>
   <div class="container">
     <div>
-      <h1 class="title">Peter Wielander</h1>
-      <div class="links">
-        <a
-          href="https://github.com/VaguelySerious/wielander.me"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
-      <ul>
+      <ul class="project-container">
         <li v-for="post in posts">
           <Project :project="post" />
         </li>
@@ -41,6 +30,7 @@ export default {
         //   'sys.id,fields.title,fields.slug,fields.description,fields.publishDate,fields.thumbImage,fields.tags,fields.githubUrl,fields.projectUrl',
       }),
     ]).then(([posts]) => {
+      console.log({ posts })
       return {
         posts: posts.items as Entry<BlogPost>[],
       }

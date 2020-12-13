@@ -7,8 +7,8 @@
           <li v-for="link in links" :key="link.href">
             <a :href="link.href" class="header-link">
               <Icon :name="link.slug" />
-              {{ link.name }}</a
-            >
+              {{ link.name }}
+            </a>
           </li>
         </ul>
         <h1 class="header-title">
