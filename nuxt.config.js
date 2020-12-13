@@ -1,9 +1,12 @@
+require('dotenv').config()
 const config = require('./contentful.json')
 const contentful = require('contentful')
 
+const token = process.env.CONTENTFUL_API_TOKEN
+
 const client = contentful.createClient({
   space: config.CTF_SPACE_ID,
-  accessToken: config.CTF_CDA_ACCESS_TOKEN,
+  accessToken: token,
 })
 
 export default {
@@ -27,8 +30,8 @@ export default {
 
   env: {
     CTF_SPACE_ID: config.CTF_SPACE_ID,
-    CTF_CDA_ACCESS_TOKEN: config.CTF_CDA_ACCESS_TOKEN,
     CTF_BLOG_POST_TYPE_ID: config.CTF_BLOG_POST_TYPE_ID,
+    CTF_CDA_ACCESS_TOKEN: token,
   },
 
   // Global page headers (https://go.nuxtjs.dev/config-head)
