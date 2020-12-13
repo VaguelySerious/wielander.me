@@ -5,8 +5,10 @@
       <header class="header">
         <ul>
           <li v-for="link in links" :key="link.href">
-            <a :href="link.href" class="header-link">{{ link.name }}</a>
-            <Icon :name="link.slug" />
+            <a :href="link.href" class="header-link">
+              <Icon :name="link.slug" />
+              {{ link.name }}</a
+            >
           </li>
         </ul>
         <h1 class="header-title">
