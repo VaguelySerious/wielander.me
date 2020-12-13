@@ -46,7 +46,8 @@ export default Vue.extend({
     const mail = 'peter.wielander@gmail.com'
     return {
       title: 'Peter Wielander',
-      description: 'Websites, Webapps, Web Shenanigans',
+      description:
+        'Language learning, machine learning, and everything in between.',
       footer: 'Thank you for dropping by.',
       mail,
       links: [
@@ -58,7 +59,7 @@ export default Vue.extend({
         {
           slug: 'github',
           name: 'VaguelySerious',
-          href: 'https://github.com/vaguelyserious',
+          href: 'https://github.com/VaguelySerious',
         },
         {
           slug: 'twitter',
