@@ -61,11 +61,11 @@ export default Vue.extend({
           name: 'VaguelySerious',
           href: 'https://github.com/VaguelySerious',
         },
-        {
-          slug: 'twitter',
-          name: '@VaguelySerious',
-          href: 'https://twitter.com/VaguelySerious',
-        },
+        // {
+        //   slug: 'twitter',
+        //   name: '@VaguelySerious',
+        //   href: 'https://twitter.com/VaguelySerious',
+        // },
       ],
     }
   },
