@@ -1,12 +1,12 @@
 <template>
   <article :id="project.fields.slug" class="item">
-    <nuxt-link
+    <a
       v-if="project.fields.projectUrl"
-      :to="project.fields.projectUrl"
+      :href="project.fields.projectUrl"
       class="item-link -live"
     >
       Live
-    </nuxt-link>
+    </a>
     <nuxt-link
       v-if="project.fields.body"
       :to="'/posts/' + project.fields.slug"
@@ -14,13 +14,13 @@
     >
       Blog
     </nuxt-link>
-    <nuxt-link
+    <a
       v-if="project.fields.githubUrl"
-      :to="project.fields.githubUrl"
+      :href="project.fields.githubUrl"
       class="item-link -code"
     >
       Code
-    </nuxt-link>
+    </a>
     <span class="item-title">{{ project.fields.title }}</span>
     <span class="item-description">{{ project.fields.description }}</span>
     <!-- <div class="project-img-wrap">
@@ -88,6 +88,7 @@ export default Vue.extend({
   margin-bottom: 1rem
 
   &-link
+    cursor: pointer
     background-color: $color-link
     color: $color-white
     font-weight: bold
