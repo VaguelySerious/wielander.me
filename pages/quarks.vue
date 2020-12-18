@@ -14,18 +14,6 @@
         />
         {{ count }}
       </div>
-      <!-- <div class="quark-input">
-        Red
-        <input
-          v-model="red"
-          type="range"
-          min="0"
-          max="255"
-          name="red"
-          id="red"
-        />
-        {{ red }}
-      </div> -->
     </div>
     <canvas id="canvas" width="600" height="600"></canvas>
   </main>
@@ -33,9 +21,8 @@
 
 <script lang="ts">
 import Vue from 'vue'
-// @ts-ignore
 
-export default {
+export default Vue.extend({
   head() {
     return { script: [{ src: '/quarks.js' }] }
   },
@@ -77,7 +64,7 @@ export default {
     this.update()
     quark.start()
   },
-}
+})
 </script>
 
 <style lang="sass">
