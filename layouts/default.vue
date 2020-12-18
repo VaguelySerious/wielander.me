@@ -3,11 +3,13 @@
     <Svgs />
     <div class="site-container">
       <header class="header">
-        <ul>
+        <ul class="header-nav">
           <li v-for="link in links" :key="link.href">
             <a :href="link.href" class="header-link">
               <Icon :name="link.slug" />
-              {{ link.name }}
+              <span>
+                {{ link.name }}
+              </span>
             </a>
           </li>
         </ul>
@@ -20,8 +22,8 @@
       <Nuxt />
 
       <footer class="footer">
-        <p class="footer-text">{{ footer }}</p>
-        <a :href="'mailto:' + mail" class="footer-mail">{{ mail }}</a>
+        <!-- <p class="footer-text">{{ footer }}</p> -->
+        <!-- <a :href="'mailto:' + mail" class="footer-mail">{{ mail }}</a> -->
         <ul class="footer-icons">
           <li v-for="link in links" :key="link.href">
             <a :href="link.href" class="footer-link" target="_blank">
@@ -80,19 +82,22 @@ export default Vue.extend({
   @media (min-width: 992px)
     padding-top: 3rem
 
+  &-nav
+    display: flex
+
   &-link
+    margin-right: 2rem
     color: $color-soft
     text-decoration: none
     display: flex
     align-items: center
-    padding: 3px 0
     font-size: 0.875rem
     max-width: 400px
     .icon
       order: -1
-      width: 1em
-      height: 1em
-      margin-right: 20px
+      width: 1rem
+      height: 1rem
+      margin-right: 10px
 
   &-title
     font-size: 1.8rem
@@ -105,9 +110,9 @@ export default Vue.extend({
 
   &-subtitle
     margin-top: 0.25rem
-    font-size: 1.6rem
+    font-size: 1.4rem
     @media (min-width: 992px)
-      font-size: 2.75rem
+      font-size: 2.2rem
     font-weight: 300
     line-height: 1.2
 
@@ -118,7 +123,7 @@ export default Vue.extend({
       font-size: 1.75rem
 
 .footer
-  padding-top: 5rem
+  // padding-top: 5rem
   flex-direction: column
   align-items: center
   text-align: center
