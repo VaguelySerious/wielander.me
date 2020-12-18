@@ -3,7 +3,7 @@
     <nuxt-link
       v-if="project.fields.projectUrl"
       :to="project.fields.projectUrl"
-      class="item-link"
+      class="item-link -live"
     >
       Live
     </nuxt-link>
@@ -17,7 +17,7 @@
     <nuxt-link
       v-if="project.fields.githubUrl"
       :to="project.fields.githubUrl"
-      class="item-link"
+      class="item-link -code"
     >
       Code
     </nuxt-link>
@@ -85,20 +85,28 @@ export default Vue.extend({
 @import '../assets/global'
 
 .item
-
   margin-bottom: 1rem
 
   &-link
-    background-color: #faa
+    background-color: $color-link
+    color: $color-white
     font-weight: bold
     margin-right: 0.5rem
     padding: 0.1rem 0.3rem
+    @media (max-width: 1000px)
+      padding: 0.3rem 0.5rem
+
+    &.-live
+      background-color: $color-link-live
+    &.-code
+      background-color: $color-link-code
+
 
   &-title
     margin-left: 0.5rem
     margin-right: 1rem
     font-weight: bold
-    color: black
+    color: $color-dark
 
   // &-description
   //   border-left: 1px solid black
