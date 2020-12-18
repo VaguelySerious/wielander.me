@@ -9,4 +9,6 @@
 
 <script lang="ts"></script>
 
-<style lang="sass"></style>
+<style lang="sass">
+@import '../assets/global'
+</style>

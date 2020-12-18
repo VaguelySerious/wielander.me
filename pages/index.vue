@@ -3,7 +3,7 @@
     <div>
       <ul class="project-container">
         <li v-for="post in posts">
-          <Project :project="post" />
+          <Item :project="post" />
         </li>
       </ul>
     </div>
@@ -16,7 +16,8 @@ import { Entry } from 'contentful'
 import { createClient } from '../plugins/contentful'
 import { BlogPost } from '../assets/types'
 // @ts-ignore
-import Project from '../components/Project'
+// import Project from '../components/Project'
+import Item from '../components/Item'
 
 const client = createClient()
 
@@ -25,12 +26,11 @@ export default {
     return Promise.all([
       client.getEntries({
         content_type: env.CTF_BLOG_POST_TYPE_ID,
-        order: '-sys.createdAt',
+        order: '-fields.publishDate',
         // select:
         //   'sys.id,fields.title,fields.slug,fields.description,fields.publishDate,fields.thumbImage,fields.tags,fields.githubUrl,fields.projectUrl',
       }),
     ]).then(([posts]) => {
-      console.log({ posts })
       return {
         posts: posts.items as Entry<BlogPost>[],
       }
@@ -39,4 +39,7 @@ export default {
 }
 </script>
 
-<style lang="sass"></style>
+<style lang="sass">
+
+@import '../assets/global'
+</style>

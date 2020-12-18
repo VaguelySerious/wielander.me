@@ -73,5 +73,86 @@ export default Vue.extend({
 </script>
 
 <style lang="sass">
-@import '../assets/styles/styles'
+@import '../assets/global'
+
+.header
+  padding-bottom: 2rem
+  @media (min-width: 992px)
+    padding-top: 3rem
+
+  &-link
+    color: $color-soft
+    text-decoration: none
+    display: flex
+    align-items: center
+    padding: 3px 0
+    font-size: 0.875rem
+    max-width: 400px
+    .icon
+      order: -1
+      width: 1em
+      height: 1em
+      margin-right: 20px
+
+  &-title
+    font-size: 1.8rem
+    @media (min-width: 992px)
+      font-size: 3rem
+    padding-top: 1rem
+    margin: 0
+    font-weight: 300
+    line-height: 1.2
+
+  &-subtitle
+    margin-top: 0.25rem
+    font-size: 1.6rem
+    @media (min-width: 992px)
+      font-size: 2.75rem
+    font-weight: 300
+    line-height: 1.2
+
+  &-description
+    font-size: 1.25rem
+    @media (min-width: 992px)
+      width: 75%
+      font-size: 1.75rem
+
+.footer
+  padding-top: 5rem
+  flex-direction: column
+  align-items: center
+  text-align: center
+  display: flex
+
+  &-text
+    font-size: 1.8rem
+    @media (min-width: 992px)
+      font-size: 3rem
+    font-weight: 500
+    margin: 0
+    line-height: 1.2
+
+  &-mail
+    font-size: 1.25rem
+    color: $color-light
+    @media (min-width: 992px)
+      font-size: 2.25rem
+
+  &-icons
+    display: flex
+    padding-top: 6rem
+    padding-bottom: 2rem
+
+  &-link
+    color: $color-light
+    text-decoration: none
+    display: flex
+    align-items: center
+    padding: 3px 0
+    font-size: 2.25rem
+    .icon
+      order: -1
+      width: 1em
+      height: 1em
+      margin-right: 20px
 </style>
