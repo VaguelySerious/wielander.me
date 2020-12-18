@@ -23,6 +23,9 @@
     </a>
     <span class="item-title">{{ project.fields.title }}</span>
     <span class="item-description">{{ project.fields.description }}</span>
+    <span class="item-date">{{
+      new Date(project.fields.publishDate).toDateString()
+    }}</span>
     <!-- <div class="project-img-wrap">
       <img
         v-if="project.fields.thumbImage"
@@ -111,4 +114,8 @@ export default Vue.extend({
 
   // &-description
   //   border-left: 1px solid black
+
+  &-date
+    margin-left: 0.2rem
+    font-style: italic
 </style>
