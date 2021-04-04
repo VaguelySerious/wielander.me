@@ -26,7 +26,7 @@
         <span class="item-title">{{ project.fields.title }}</span>
       </span>
       <span class="item-date"
-        ><time :datetime="datetime">{{ dateString }}</time></span
+        ><time :datetime="dateTime">{{ dateString }}</time></span
       >
     </span>
     <span class="item-description">{{ project.fields.description }}</span>
