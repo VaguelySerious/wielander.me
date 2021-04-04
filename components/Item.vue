@@ -25,7 +25,9 @@
         </a>
         <span class="item-title">{{ project.fields.title }}</span>
       </span>
-      <span class="item-date">{{ dateString }}</span>
+      <span class="item-date"
+        ><time :datetime="datetime">{{ dateString }}</time></span
+      >
     </span>
     <span class="item-description">{{ project.fields.description }}</span>
     <!-- <div class="project-img-wrap">
@@ -85,7 +87,15 @@ export default Vue.extend({
   },
   computed: {
     dateString() {
-      return new Date(this.project.fields.publishDate).toDateString().slice(4)
+      const eightHours = 8 * 1000 * 3600
+      return new Date(
+        new Date(this.project.fields.publishDate).getTime() + eightHours
+      )
+        .toDateString()
+        .slice(4)
+    },
+    dateTime() {
+      return this.project.fields.publishDate.slice(0, 10)
     },
   },
 })
@@ -108,8 +118,8 @@ export default Vue.extend({
     color: $color-white
     font-weight: bold
     margin-right: 0.5rem
-    padding: 0.1rem 0.3rem
-    @media (max-width: 1000px)
+    padding: 0.25rem 0.4rem
+    @media (max-width: 1023px)
       padding: 0.3rem 0.5rem
 
     &.-live

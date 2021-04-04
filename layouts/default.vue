@@ -5,7 +5,12 @@
       <header class="header">
         <ul class="header-nav">
           <li v-for="link in links" :key="link.href">
-            <a :href="link.href" class="header-link">
+            <a
+              rel="noopener"
+              :href="link.href"
+              class="header-link"
+              :aria-label="link.label"
+            >
               <Icon :name="link.slug" />
               <span>
                 {{ link.name }}
@@ -27,7 +32,14 @@
         <!-- <a :href="'mailto:' + mail" class="footer-mail">{{ mail }}</a> -->
         <ul class="footer-icons">
           <li v-for="link in links" :key="link.href">
-            <a :href="link.href" class="footer-link" target="_blank">
+            <a
+              rel="noopener"
+              :href="link.href"
+              class="footer-link"
+              target="_blank"
+              :aria-label="link.label"
+            >
+              <span class="hidden">{{ link.name }}</span>
               <Icon :name="link.slug" />
             </a>
           </li>
@@ -63,21 +75,25 @@ export default Vue.extend({
           slug: 'globe',
           name: 'wielander.me',
           href: '/',
+          label: 'My website',
         },
         {
           slug: 'mail',
           name: 'peter.wielander',
           href: 'mailto:' + mail,
+          label: 'My email address',
         },
         {
           slug: 'github',
           name: 'VaguelySerious',
           href: 'https://github.com/VaguelySerious',
+          label: 'My github profile',
         },
         {
           slug: 'twitter',
           name: '@VaguelySerious',
           href: 'https://twitter.com/VaguelySerious',
+          label: 'My twitter account',
         },
       ],
     }
@@ -87,6 +103,9 @@ export default Vue.extend({
 
 <style lang="sass">
 @import '../assets/global'
+
+.hidden
+  display: none
 
 .header
   padding-bottom: 2rem
@@ -101,7 +120,7 @@ export default Vue.extend({
       display: block
 
   &-link
-    margin-right: 2rem
+    margin: 0 1rem 0.5rem 0
     color: $color-soft
     text-decoration: none
     display: flex
@@ -174,5 +193,5 @@ export default Vue.extend({
       order: -1
       width: 1em
       height: 1em
-      margin-right: 20px
+      margin: 0 10px
 </style>
