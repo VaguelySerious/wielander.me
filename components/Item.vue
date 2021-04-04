@@ -1,31 +1,33 @@
 <template>
   <article :id="project.fields.slug" class="item">
-    <a
-      v-if="project.fields.projectUrl"
-      :href="project.fields.projectUrl"
-      class="item-link -live"
-    >
-      Link
-    </a>
-    <nuxt-link
-      v-if="project.fields.body"
-      :to="'/posts/' + project.fields.slug"
-      class="item-link"
-    >
-      Blog
-    </nuxt-link>
-    <a
-      v-if="project.fields.githubUrl"
-      :href="project.fields.githubUrl"
-      class="item-link -code"
-    >
-      Code
-    </a>
-    <span class="item-title">{{ project.fields.title }}</span>
+    <span class="item-header">
+      <span>
+        <a
+          v-if="project.fields.projectUrl"
+          :href="project.fields.projectUrl"
+          class="item-link -live"
+        >
+          Link
+        </a>
+        <nuxt-link
+          v-if="project.fields.body"
+          :to="'/posts/' + project.fields.slug"
+          class="item-link"
+        >
+          Blog
+        </nuxt-link>
+        <a
+          v-if="project.fields.githubUrl"
+          :href="project.fields.githubUrl"
+          class="item-link -code"
+        >
+          Code
+        </a>
+        <span class="item-title">{{ project.fields.title }}</span>
+      </span>
+      <span class="item-date">{{ dateString }}</span>
+    </span>
     <span class="item-description">{{ project.fields.description }}</span>
-    <span class="item-date">{{
-      new Date(project.fields.publishDate).toDateString()
-    }}</span>
     <!-- <div class="project-img-wrap">
       <img
         v-if="project.fields.thumbImage"
@@ -81,6 +83,11 @@ export default Vue.extend({
   props: {
     project: Object as PropType<Entry<BlogPost>>,
   },
+  computed: {
+    dateString() {
+      return new Date(this.project.fields.publishDate).toDateString().slice(4)
+    },
+  },
 })
 </script>
 
@@ -88,7 +95,12 @@ export default Vue.extend({
 @import '../assets/global'
 
 .item
-  margin-bottom: 1rem
+  margin-bottom: 1.5rem
+
+  &-header
+    display: flex
+    justify-content: space-between
+    margin-bottom: 0.5rem
 
   &-link
     cursor: pointer
@@ -107,7 +119,6 @@ export default Vue.extend({
 
 
   &-title
-    margin-left: 0.5rem
     margin-right: 1rem
     font-weight: bold
     color: $color-dark
@@ -118,4 +129,5 @@ export default Vue.extend({
   &-date
     margin-left: 0.2rem
     font-style: italic
+    white-space: nowrap
 </style>

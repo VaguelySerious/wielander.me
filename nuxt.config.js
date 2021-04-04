@@ -36,7 +36,7 @@ export default {
 
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
-    title: 'Peter Wielander',
+    title: "Peter's Blog",
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -44,7 +44,7 @@ export default {
         hid: 'description',
         name: 'description',
         content:
-          "Peter Wielander's Blog. All about tech, language learning, live lessons and random shenanigans.",
+          "Peter Wielander's Blog. All about tech, machine learning, language learning, sports, life lessons and random shenanigans.",
       },
     ],
     link: [

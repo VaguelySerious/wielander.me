@@ -34,6 +34,19 @@ export default {
       return { post }
     })
   },
+  head() {
+    const post = (this as any).post as Entry<BlogPost>
+    return {
+      title: post.fields.title + " | Peter's blog ",
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: post.fields.description,
+        },
+      ],
+    }
+  },
 }
 </script>
 

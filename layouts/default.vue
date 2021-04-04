@@ -13,10 +13,11 @@
             </a>
           </li>
         </ul>
-        <h1 class="header-title">
-          <strong>{{ title }}</strong>
-        </h1>
-        <h2 class="header-subtitle" v-html="description"></h2>
+        <nuxt-link class="header-title" to="/" :tag="isMainPage ? 'h1' : 'div'">
+          {{ title }}
+        </nuxt-link>
+        <h2 v-if="isMainPage" class="header-subtitle" v-html="description"></h2>
+        <div v-else class="header-subtitle" v-html="description"></div>
       </header>
 
       <Nuxt />
@@ -44,6 +45,11 @@ import Icon from '../components/Icon'
 import Svgs from '../components/Svgs'
 
 export default Vue.extend({
+  computed: {
+    isMainPage() {
+      return this.$route.path === '/'
+    },
+  },
   data() {
     const mail = 'peter.wielander@gmail.com'
     return {
@@ -54,8 +60,13 @@ export default Vue.extend({
       mail,
       links: [
         {
+          slug: 'globe',
+          name: 'wielander.me',
+          href: '/',
+        },
+        {
           slug: 'mail',
-          name: mail,
+          name: 'peter.wielander',
           href: 'mailto:' + mail,
         },
         {
@@ -63,11 +74,11 @@ export default Vue.extend({
           name: 'VaguelySerious',
           href: 'https://github.com/VaguelySerious',
         },
-        // {
-        //   slug: 'twitter',
-        //   name: '@VaguelySerious',
-        //   href: 'https://twitter.com/VaguelySerious',
-        // },
+        {
+          slug: 'twitter',
+          name: '@VaguelySerious',
+          href: 'https://twitter.com/VaguelySerious',
+        },
       ],
     }
   },
@@ -84,6 +95,10 @@ export default Vue.extend({
 
   &-nav
     display: flex
+    flex-wrap: wrap
+
+    & li
+      display: block
 
   &-link
     margin-right: 2rem
@@ -105,7 +120,7 @@ export default Vue.extend({
       font-size: 3rem
     padding-top: 1rem
     margin: 0
-    font-weight: 300
+    font-weight: 700
     line-height: 1.2
 
   &-subtitle
