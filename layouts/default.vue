@@ -4,6 +4,12 @@
     <div class="site-container">
       <header class="header">
         <ul class="header-nav">
+          <li>
+            <nuxt-link to="/" class="header-link" aria-label="My website">
+              <Icon name="globe" />
+              <span> wielander.me </span>
+            </nuxt-link>
+          </li>
           <li v-for="link in links" :key="link.href">
             <a
               rel="noopener"
@@ -18,15 +24,21 @@
             </a>
           </li>
         </ul>
-        <nuxt-link
-          class="header-title clickable"
-          to="/"
-          :tag="isMainPage ? 'h1' : 'div'"
-        >
-          {{ title }}
-        </nuxt-link>
-        <h2 v-if="isMainPage" class="header-subtitle" v-html="description"></h2>
-        <div v-else class="header-subtitle" v-html="description"></div>
+        <div v-if="isMainPage" :class="{ '-is-small': !isMainPage }">
+          <nuxt-link
+            class="header-title clickable"
+            to="/"
+            :tag="isMainPage ? 'h1' : 'div'"
+          >
+            {{ title }}
+          </nuxt-link>
+          <h2
+            v-if="isMainPage"
+            class="header-subtitle"
+            v-html="description"
+          ></h2>
+          <!-- <div v-else class="header-subtitle" v-html="description"></div> -->
+        </div>
       </header>
 
       <Nuxt />
@@ -35,6 +47,12 @@
         <!-- <p class="footer-text">{{ footer }}</p> -->
         <!-- <a :href="'mailto:' + mail" class="footer-mail">{{ mail }}</a> -->
         <ul class="footer-icons">
+          <li>
+            <nuxt-link to="/" class="footer-link" aria-label="My website">
+              <span class="hidden">wielander.me</span>
+              <Icon name="globe" />
+            </nuxt-link>
+          </li>
           <li v-for="link in links" :key="link.href">
             <a
               rel="noopener"
@@ -76,12 +94,6 @@ export default Vue.extend({
       mail,
       links: [
         {
-          slug: 'globe',
-          name: 'wielander.me',
-          href: '/',
-          label: 'My website',
-        },
-        {
           slug: 'mail',
           name: 'peter.wielander',
           href: 'mailto:' + mail,
@@ -107,6 +119,14 @@ export default Vue.extend({
 
 <style lang="sass">
 @import '../assets/global'
+
+.icon
+  order: -1
+  width: 1em
+  height: 1em
+
+.-is-small
+  font-size: 0.75rem
 
 .hidden
   display: none
@@ -135,15 +155,12 @@ export default Vue.extend({
     font-size: 0.875rem
     max-width: 400px
     .icon
-      order: -1
-      width: 1rem
-      height: 1rem
       margin-right: 10px
 
   &-title
-    font-size: 1.8rem
+    font-size: 1.8em
     @media (min-width: 992px)
-      font-size: 3rem
+      font-size: 3em
     padding-top: 1rem
     margin: 0
     font-weight: 700
@@ -151,9 +168,9 @@ export default Vue.extend({
 
   &-subtitle
     margin-top: 0.25rem
-    font-size: 1.4rem
+    font-size: 1.4em
     @media (min-width: 992px)
-      font-size: 2.2rem
+      font-size: 2.2em
     font-weight: 300
     line-height: 1.2
 
@@ -197,8 +214,5 @@ export default Vue.extend({
     padding: 3px 0
     font-size: 2.25rem
     .icon
-      order: -1
-      width: 1em
-      height: 1em
       margin: 0 10px
 </style>

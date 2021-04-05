@@ -9,6 +9,10 @@ const client = contentful.createClient({
   accessToken: token,
 })
 
+const title = "Peter's Blog"
+const desc =
+  "Peter Wielander's Blog. All about language learning, machine learning, tech, nature, exercise, and life lessons."
+
 export default {
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
@@ -39,16 +43,23 @@ export default {
     htmlAttrs: {
       lang: 'en',
     },
-    title: "Peter's Blog",
+    title,
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      {
-        hid: 'description',
-        name: 'description',
-        content:
-          "Peter Wielander's Blog. All about tech, machine learning, language learning, sports, life lessons and random shenanigans.",
-      },
+      { name: 'twitter:creator', content: '@vaguelyserious' },
+      ...['og:title', 'twitter:title'].map((name) => ({
+        name,
+        hid: name,
+        content: title,
+      })),
+      ...['description', 'og:description', 'twitter:description'].map(
+        (name) => ({
+          name,
+          hid: name,
+          content: desc,
+        })
+      ),
     ],
     link: [
       // { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }

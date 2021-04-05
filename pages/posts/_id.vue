@@ -1,6 +1,19 @@
 <template>
-  <div class="post container">
-    <div class="body" v-html="post.fields.body"></div>
+  <div class="post">
+    <nuxt-link to="/" class="post-controls">
+      <Icon name="arrow-left" /> <span>All Posts &amp; Projects</span>
+    </nuxt-link>
+    <h1 class="post-title">{{ post.fields.title }}</h1>
+    <div class="post-header">
+      <div class="post-date">
+        {{ new Date(post.fields.publishDate).toDateString().slice(4) }}
+      </div>
+      <!-- <div class="post-location">{{post.fields.tags}}</div> -->
+      <div class="post-length">{{ stats.text }}</div>
+    </div>
+    <div class="container">
+      <div class="body" v-html="body"></div>
+    </div>
   </div>
 </template>
 
@@ -10,6 +23,9 @@ import { Entry } from 'contentful'
 import { createClient } from '../../plugins/contentful'
 import { BlogPost } from '../../assets/types'
 import marked from 'marked'
+import readingTime from 'reading-time'
+// @ts-ignore
+import Icon from '../../components/Icon'
 
 const client = createClient()
 
@@ -25,25 +41,39 @@ export default {
       if (!post) {
         throw new Error('Post not available')
       }
-      if (post.fields.description) {
-        post.fields.description = marked(post.fields.description)
+      const description = marked(post.fields.description)
+      const body = marked(post.fields.body || '')
+      return {
+        post,
+        description,
+        body,
+        stats: readingTime(post.fields.body || ''),
       }
-      if (post.fields.body) {
-        post.fields.body = marked(post.fields.body)
-      }
-      return { post }
     })
   },
   head() {
     const post = (this as any).post as Entry<BlogPost>
+    const title = post.fields.title + " | Peter's blog "
     return {
-      title: post.fields.title + " | Peter's blog ",
+      title,
       meta: [
         {
           hid: 'description',
           name: 'description',
           content: post.fields.description,
         },
+        ...['og:title', 'twitter:title'].map((name) => ({
+          name,
+          hid: name,
+          content: title,
+        })),
+        ...['description', 'og:description', 'twitter:description'].map(
+          (name) => ({
+            name,
+            hid: name,
+            content: post.fields.description,
+          })
+        ),
       ],
     }
   },
@@ -60,6 +90,30 @@ export default {
     margin-top: 2em
 
 .post
+
+  &-title
+    margin-top: 1rem !important
+    font-size: 2.25em
+
+  &-header
+    display: flex
+    justify-content: space-between
+    margin-bottom: 2rem
+
+  &-controls
+    display: flex
+    align-items: center
+    text-decoration: none !important
+    color: inherit !important
+
+    & .icon
+      margin-right: 0.5rem
+
+  &-length
+    //
+  &-date
+    //
+
   font-size: 1.125rem
   ul li
     list-style: disc
