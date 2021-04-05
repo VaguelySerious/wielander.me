@@ -18,7 +18,11 @@
             </a>
           </li>
         </ul>
-        <nuxt-link class="header-title" to="/" :tag="isMainPage ? 'h1' : 'div'">
+        <nuxt-link
+          class="header-title clickable"
+          to="/"
+          :tag="isMainPage ? 'h1' : 'div'"
+        >
           {{ title }}
         </nuxt-link>
         <h2 v-if="isMainPage" class="header-subtitle" v-html="description"></h2>
@@ -106,6 +110,9 @@ export default Vue.extend({
 
 .hidden
   display: none
+
+.clickable
+  cursor: pointer
 
 .header
   padding-bottom: 2rem
