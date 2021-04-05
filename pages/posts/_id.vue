@@ -57,23 +57,26 @@ export default {
     return {
       title,
       meta: [
-        {
-          hid: 'description',
-          name: 'description',
-          content: post.fields.description,
-        },
-        ...['og:title', 'twitter:title'].map((name) => ({
+        ...['twitter:title'].map((name) => ({
           name,
           hid: name,
           content: title,
         })),
-        ...['description', 'og:description', 'twitter:description'].map(
-          (name) => ({
-            name,
-            hid: name,
-            content: post.fields.description,
-          })
-        ),
+        ...['og:title'].map((name) => ({
+          property: name,
+          hid: name,
+          content: title,
+        })),
+        ...['description', 'twitter:description'].map((name) => ({
+          name,
+          hid: name,
+          content: post.fields.description,
+        })),
+        ...['og:description'].map((name) => ({
+          property: name,
+          hid: name,
+          content: post.fields.description,
+        })),
       ],
     }
   },

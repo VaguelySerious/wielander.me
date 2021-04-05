@@ -48,18 +48,26 @@ export default {
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { name: 'twitter:creator', content: '@vaguelyserious' },
-      ...['og:title', 'twitter:title'].map((name) => ({
+      ...['twitter:title'].map((name) => ({
         name,
         hid: name,
         content: title,
       })),
-      ...['description', 'og:description', 'twitter:description'].map(
-        (name) => ({
-          name,
-          hid: name,
-          content: desc,
-        })
-      ),
+      ...['og:title'].map((name) => ({
+        property: name,
+        hid: name,
+        content: title,
+      })),
+      ...['description', 'twitter:description'].map((name) => ({
+        name,
+        hid: name,
+        content: desc,
+      })),
+      ...['og:description'].map((name) => ({
+        property: name,
+        hid: name,
+        content: desc,
+      })),
     ],
     link: [
       // { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
