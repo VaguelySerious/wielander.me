@@ -7,7 +7,7 @@
           :href="project.fields.projectUrl"
           class="item-link -live"
         >
-          Link
+          Web
         </a>
         <nuxt-link
           v-if="project.fields.body"
