@@ -135,6 +135,10 @@ export default {
     & + p
       margin-top: 0.5em
   blockquote
+    margin: 1.5rem 0
+    padding: 0 1.5rem
+    border-left: 1px solid gray
+
     font: normal italic 1.375em/1.3 Georgia, 'Times New Roman', Times, serif
 
     p:not(:first-child):last-child
