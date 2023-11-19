@@ -29,7 +29,7 @@
         ><time :datetime="dateTime">{{ dateString }}</time></span
       >
     </span>
-    <span class="item-description">{{ project.fields.description }}</span>
+    <span class="item-description" v-html="project.fields.description"></span>
     <!-- <div class="project-img-wrap">
       <img
         v-if="project.fields.thumbImage"
