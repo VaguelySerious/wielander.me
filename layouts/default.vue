@@ -32,11 +32,13 @@
           >
             {{ title }}
           </nuxt-link>
-          <h2
+          <h3
             v-if="isMainPage"
             class="header-subtitle"
-            v-html="description"
-          ></h2>
+          >
+            <p>I'm a Senior Software Engineer and tech lead for <a href="https://www.minervaproject.com/">Minerva Project</a>'s emerging products, striving to make active-learning the norm in higher-ed classrooms. In my free time I obsess about language learning, machine learning, education, movement, nutrition, and fitness.</p>
+            <p>I belief frugality is a virtue, and all one needs in life is to engage physically, engage mentally, and engage emotionally. As proof of this, I've been living out of a backpack since 2020.</p>
+          </h3>
           <!-- <div v-else class="header-subtitle" v-html="description"></div> -->
         </div>
       </header>
@@ -90,7 +92,7 @@ export default Vue.extend({
       title: 'Peter Wielander',
       description:
         'Language learning, machine learning, and everything in between.',
-      footer: 'Thank you for dropping by.',
+      footer: "Thanks for dropping by, you're welcome anytime.",
       mail,
       links: [
         {
@@ -168,9 +170,9 @@ export default Vue.extend({
 
   &-subtitle
     margin-top: 0.25rem
-    font-size: 1.4em
+    font-size: 1.2em
     @media (min-width: 992px)
-      font-size: 2.2em
+      font-size: 1.5em
     font-weight: 300
     line-height: 1.2
 
