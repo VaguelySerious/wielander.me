@@ -32,13 +32,21 @@
           >
             {{ title }}
           </nuxt-link>
-          <h3
-            v-if="isMainPage"
-            class="header-subtitle"
-          >
-            <p>I'm a Senior Software Engineer and tech lead for <a href="https://www.minervaproject.com/">Minerva Project</a>'s emerging products, striving to make active-learning the norm in higher-ed classrooms. In my free time I obsess about language learning, machine learning, education, movement, nutrition, and fitness.</p>
-            <p>I belief frugality is a virtue, and all one needs in life is to engage physically, engage mentally, and engage emotionally. As proof of this, I've been living out of a backpack since 2020.</p>
-          </h3>
+          <h2 v-if="isMainPage" class="header-subtitle">
+            <p>
+              I'm a Senior Software Engineer and tech lead for
+              <a href="https://www.minervaproject.com/">Minerva Project</a>'s
+              emerging products, striving to make active-learning the norm in
+              higher-ed classrooms. In my free time I obsess about language
+              learning, machine learning, education, movement, nutrition, and
+              fitness.
+            </p>
+            <p>
+              I belief frugality is a virtue, and all one needs in life is to
+              engage physically, engage mentally, and engage emotionally. As
+              proof of this, I've been living out of a backpack since 2020.
+            </p>
+          </h2>
           <!-- <div v-else class="header-subtitle" v-html="description"></div> -->
         </div>
       </header>
@@ -97,21 +105,21 @@ export default Vue.extend({
       links: [
         {
           slug: 'mail',
-          name: 'peter.wielander',
+          name: 'Mail',
           href: 'mailto:' + mail,
           label: 'My email address',
         },
         {
           slug: 'github',
-          name: 'VaguelySerious',
+          name: 'Github',
           href: 'https://github.com/VaguelySerious',
           label: 'My github profile',
         },
         {
-          slug: 'twitter',
-          name: '@VaguelySerious',
-          href: 'https://twitter.com/VaguelySerious',
-          label: 'My twitter account',
+          slug: 'linkedin',
+          name: 'LinkedIn',
+          href: 'https://www.linkedin.com/in/peter-wielander/',
+          label: 'My LinkedIn account',
         },
       ],
     }
