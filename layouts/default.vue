@@ -7,7 +7,7 @@
           <li>
             <nuxt-link to="/" class="header-link" aria-label="My website">
               <Icon name="globe" />
-              <span> wielander.me </span>
+              <span>Web</span>
             </nuxt-link>
           </li>
           <li v-for="link in links" :key="link.href">
@@ -34,7 +34,7 @@
           </nuxt-link>
           <h2 v-if="isMainPage" class="header-subtitle">
             <p>
-              I'm a Senior Software Engineer and tech lead for
+              I'm a Staff Software Engineer and Tech Lead for
               <a href="https://www.minervaproject.com/">Minerva Project</a>'s
               emerging products, striving to make active-learning the norm in
               higher-ed classrooms. In my free time I obsess about language
@@ -59,7 +59,7 @@
         <ul class="footer-icons">
           <li>
             <nuxt-link to="/" class="footer-link" aria-label="My website">
-              <span class="hidden">wielander.me</span>
+              <span class="hidden">Web</span>
               <Icon name="globe" />
             </nuxt-link>
           </li>
