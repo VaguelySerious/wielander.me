@@ -34,12 +34,14 @@
           </nuxt-link>
           <h2 v-if="isMainPage" class="header-subtitle">
             <p>
-              I'm a Staff Software Engineer and Tech Lead for
+              I obsess about languages, education, software, AI, movement, intentionality, self-improvement, economics, and frugality.
+              Every month is a different project, every year a different lifetime.
+            </p>
+            <p>
+              During work hours, I'm a Staff Software Engineer and Tech Lead for
               <a href="https://www.minervaproject.com/">Minerva Project</a>'s
               emerging products, striving to make active-learning the norm in
-              higher-ed classrooms. In my free time I obsess about language
-              learning, machine learning, education, movement, nutrition, and
-              fitness.
+              higher-ed classrooms.
             </p>
             <p>
               I belief frugality is a virtue, and all one needs in life is to
