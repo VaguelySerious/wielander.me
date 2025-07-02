@@ -34,7 +34,7 @@
           </nuxt-link>
           <h2 v-if="isMainPage" class="header-subtitle">
             <p>
-              I obsess about languages, education, software, AI, movement, intentionality, self-improvement, economics, and frugality.
+              I obsess about languages, education, software, AI, movement, self-improvement, economics, frugality.
               Every month is a different project, every year a different lifetime.
             </p>
             <p>
@@ -42,11 +42,6 @@
               <a href="https://www.minervaproject.com/">Minerva Project</a>'s
               emerging products, striving to make active-learning the norm in
               higher-ed classrooms.
-            </p>
-            <p>
-              I belief frugality is a virtue, and all one needs in life is to
-              engage physically, engage mentally, and engage emotionally. As
-              proof of this, I've been living out of a backpack since 2020.
             </p>
           </h2>
           <!-- <div v-else class="header-subtitle" v-html="description"></div> -->
