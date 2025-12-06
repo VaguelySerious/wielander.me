@@ -38,7 +38,7 @@
               Every month is a different project, every year a different lifetime.
             </p>
             <p>
-              During work hours, I'm a Software Engineer at Vercel, a core contributor for <a href="https://useworkflow.dev/">Workflow DevKit</a>`, and author of <a href="https://useworkflow.dev/docs/ai">Building Durable Agents</a>.
+              During work hours, I'm a Software Engineer at <a href="https://vercel.com/">Vercel</a>, a core contributor of <a href="https://useworkflow.dev/">Workflow DevKit</a>, and author of <a href="https://useworkflow.dev/docs/ai">Building Durable Agents</a>.
 
 Previously, I was Staff Software Engineer and Tech Lead for
               <a href="https://www.minervaproject.com/">Minerva Project</a>'s
