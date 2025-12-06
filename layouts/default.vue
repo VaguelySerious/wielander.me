@@ -34,13 +34,15 @@
           </nuxt-link>
           <h2 v-if="isMainPage" class="header-subtitle">
             <p>
-              I obsess about languages, education, software, AI, movement, self-improvement, economics, frugality.
+              I obsess about languages, education, software, AI, movement, self-improvement, economics, physics and frugality.
               Every month is a different project, every year a different lifetime.
             </p>
             <p>
-              During work hours, I'm a Staff Software Engineer and Tech Lead for
+              During work hours, I'm a Software Engineer at Vercel, a core contributor for <a href="https://useworkflow.dev/">Workflow DevKit</a>`, and author of <a href="https://useworkflow.dev/docs/ai">Building Durable Agents</a>.
+
+Previously, I was Staff Software Engineer and Tech Lead for
               <a href="https://www.minervaproject.com/">Minerva Project</a>'s
-              emerging products, striving to make active-learning the norm in
+              emerging products, helping to make active-learning the norm in
               higher-ed classrooms.
             </p>
           </h2>
