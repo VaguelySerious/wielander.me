@@ -12,11 +12,13 @@ export function Item({ project }: { project: Entry<any> }) {
 		.slice(4);
 	const dateTime = fields.publishDate.slice(0, 10);
 
-	// Check if projectUrl is on wielander.me domain
+	// Check if projectUrl is on the main wielander.me domain (not subdomains)
 	const isWielanderUrl =
 		fields.projectUrl &&
-		(fields.projectUrl.includes("wielander.me") ||
-			fields.projectUrl.startsWith("/"));
+		(fields.projectUrl.startsWith("/") ||
+			fields.projectUrl.startsWith("wielander.me") ||
+			fields.projectUrl.includes("://wielander.me/") ||
+			fields.projectUrl.includes("://www.wielander.me/"));
 
 	// Convert wielander.me URLs to relative paths
 	const getRelativePath = (url: string) => {
@@ -24,7 +26,11 @@ export function Item({ project }: { project: Entry<any> }) {
 		if (url.startsWith("/")) return url;
 		try {
 			const urlObj = new URL(url);
-			if (urlObj.hostname.includes("wielander.me")) {
+			// Only convert if it's exactly wielander.me or www.wielander.me (no subdomains)
+			if (
+				urlObj.hostname === "wielander.me" ||
+				urlObj.hostname === "www.wielander.me"
+			) {
 				return urlObj.pathname + urlObj.search + urlObj.hash;
 			}
 		} catch (e) {
