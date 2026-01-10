@@ -1,25 +1,8 @@
 import { Item } from "@/components/Item";
-import { createClient } from "@/lib/contentful";
-import { BlogPost } from "@/lib/types";
-
-const client = createClient();
-
-async function getPosts() {
-	try {
-		const posts = await client.getEntries({
-			content_type: "blogPost",
-			order: ["-sys.createdAt"] as any,
-		});
-
-		return posts.items;
-	} catch (error) {
-		console.error("Error fetching posts:", error);
-		return [];
-	}
-}
+import { getAllPosts } from "@/lib/contentful";
 
 export default async function Home() {
-	const posts = await getPosts();
+	const posts = await getAllPosts();
 
 	return (
 		<div className="container">
