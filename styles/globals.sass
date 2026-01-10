@@ -1,0 +1,241 @@
+$color-font: black
+$color-bg: #fdfdfd
+$color-card: #fff
+$color-soft: #5B5E6A
+$color-dark: #2B2E3A
+$color-light: #9A9CA7
+$color-verylight: #BABCC7
+$color-white: #ffffff
+$color-text: mix($color-soft, $color-font)
+$color-link: #296b3b
+$color-link-code: #33558f
+$color-link-live: #796922
+$color-shadow: black
+
+@font-face
+  font-family: 'Radnika Next'
+  src: url('/assets/fonts/radnikanext-light-webfont.woff2') format('woff2'), url('/assets/fonts/radnikanext-light-webfont.woff') format('woff')
+  font-weight: 300
+  font-style: normal
+
+@font-face
+  font-family: 'Radnika Next'
+  src: url('/assets/fonts/radnikanext-medium-webfont.woff2') format('woff2'), url('/assets/fonts/radnikanext-medium-webfont.woff') format('woff')
+  font-weight: 500
+  font-style: normal
+
+html
+  background-color: $color-bg
+  color: $color-font
+  font-weight: 300
+  line-height: 1.6
+  font-family: 'Radnika Next', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif
+  text-rendering: optimizeLegibility
+  -moz-font-feature-settings: "liga" on
+  font-size: 16px
+  box-sizing: border-box
+  *, *::before, *::after
+    box-sizing: inherit
+
+body
+  margin: 0
+  padding: 0
+
+p
+  font-size: 1.2rem
+
+ul, li
+  list-style: none
+  margin: 0
+  padding: 0
+
+a
+  color: inherit
+  text-decoration: none
+
+.site-container
+  width: 100%
+  max-width: 800px
+  margin: 0 auto
+  padding: 15px
+
+.icon
+  order: -1
+  width: 1em
+  height: 1em
+
+.hidden
+  display: none
+
+.clickable
+  cursor: pointer
+
+.header
+  padding-bottom: 2rem
+  @media (min-width: 992px)
+    padding-top: 3rem
+
+  &-nav
+    display: flex
+    flex-wrap: wrap
+
+    & li
+      display: block
+
+  &-link
+    margin: 0 1rem 0.5rem 0
+    color: $color-soft
+    text-decoration: none
+    display: flex
+    align-items: center
+    font-size: 0.875rem
+    max-width: 400px
+    .icon
+      margin-right: 10px
+
+  &-title
+    font-size: 1.8em
+    @media (min-width: 992px)
+      font-size: 3em
+    padding-top: 1rem
+    margin: 0
+    font-weight: 700
+    line-height: 1.2
+
+    h1
+      margin: 0
+      font-size: 1em
+      font-weight: inherit
+
+  &-subtitle
+    margin-top: 0.25rem
+    font-size: 1.2em
+    @media (min-width: 992px)
+      font-size: 1.5em
+    font-weight: 300
+    line-height: 1.2
+
+.footer
+  flex-direction: column
+  align-items: center
+  text-align: center
+  display: flex
+
+  &-icons
+    display: flex
+    padding-top: 6rem
+    padding-bottom: 2rem
+
+  &-link
+    color: $color-light
+    text-decoration: none
+    display: flex
+    align-items: center
+    padding: 3px 0
+    font-size: 2.25rem
+    .icon
+      margin: 0 10px
+
+.item
+  margin-bottom: 1.5rem
+
+  &-header
+    display: flex
+    justify-content: space-between
+    margin-bottom: 0.5rem
+
+  &-link
+    cursor: pointer
+    background-color: $color-link
+    color: $color-white
+    font-weight: bold
+    margin-right: 0.5rem
+    padding: 0.25rem 0.4rem
+    @media (max-width: 1023px)
+      padding: 0.3rem 0.5rem
+
+    &.-live
+      background-color: $color-link-live
+    &.-code
+      background-color: $color-link-code
+
+  &-title
+    margin-right: 1rem
+    font-weight: bold
+    color: $color-dark
+
+  &-date
+    margin-left: 0.2rem
+    font-style: italic
+    white-space: nowrap
+
+%headlines
+  margin: 0 0 0.5em
+  font-weight: 500
+  &:not(:first-child)
+    margin-top: 2em
+
+.post
+  &-title
+    margin-top: 1rem !important
+    font-size: 2.25em
+
+  &-header
+    display: flex
+    justify-content: space-between
+    margin-bottom: 2rem
+
+  &-controls
+    display: flex
+    align-items: center
+    text-decoration: none !important
+    color: inherit !important
+
+    & .icon
+      margin-right: 0.5rem
+
+  font-size: 1.125rem
+  
+  ul li
+    list-style: disc
+    margin-left: 2em
+    padding-left: 0.5em
+    color: inherit
+
+    &:not(:last-child)
+      margin-bottom: 0.25em
+  
+  a
+    text-decoration: underline
+    color: blue
+
+  p
+    margin: 0
+    & + p
+      margin-top: 0.5em
+  
+  blockquote
+    margin: 1.5rem 0
+    padding: 0 1.5rem
+    border-left: 1px solid gray
+    font: normal italic 1.375em/1.3 Georgia, 'Times New Roman', Times, serif
+
+    p:not(:first-child):last-child
+      font-size: 1rem
+      color: $color-soft
+      font-style: normal
+      margin-top: 0.5em
+      font-weight: 400
+      font-family: 'Radnika Next', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+
+  h1
+    @extend %headlines
+  h2
+    @extend %headlines
+  h3
+    @extend %headlines
+
+.project-container
+  margin: 0
+  padding: 0
+
