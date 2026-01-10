@@ -12,20 +12,49 @@ export function Item({ project }: { project: Entry<any> }) {
 		.slice(4);
 	const dateTime = fields.publishDate.slice(0, 10);
 
+	// Check if projectUrl is on wielander.me domain
+	const isWielanderUrl =
+		fields.projectUrl &&
+		(fields.projectUrl.includes("wielander.me") ||
+			fields.projectUrl.startsWith("/"));
+
+	// Convert wielander.me URLs to relative paths
+	const getRelativePath = (url: string) => {
+		if (!url) return "";
+		if (url.startsWith("/")) return url;
+		try {
+			const urlObj = new URL(url);
+			if (urlObj.hostname.includes("wielander.me")) {
+				return urlObj.pathname + urlObj.search + urlObj.hash;
+			}
+		} catch (e) {
+			// Invalid URL, return as-is
+		}
+		return url;
+	};
+
 	return (
 		<article id={fields.slug} className="item">
 			<span className="item-header">
 				<span>
-					{fields.projectUrl && (
-						<a
-							href={fields.projectUrl}
-							className="item-link -live"
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							Web
-						</a>
-					)}
+					{fields.projectUrl &&
+						(isWielanderUrl ? (
+							<Link
+								href={getRelativePath(fields.projectUrl)}
+								className="item-link -live"
+							>
+								Web
+							</Link>
+						) : (
+							<a
+								href={fields.projectUrl}
+								className="item-link -live"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								Web
+							</a>
+						))}
 					{fields.body && (
 						<Link href={`/posts/${fields.slug}`} className="item-link">
 							Blog
