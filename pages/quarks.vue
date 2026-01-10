@@ -20,51 +20,51 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import Vue from "vue";
 
 export default Vue.extend({
-  head() {
-    return { script: [{ src: '/quarks.js' }] }
-  },
-  data() {
-    return {
-      quark: null as any,
-      padding: 100,
-      boundsX: 600,
-      boundsY: 600,
-      count: 200,
-      red: 0,
-      green: 0,
-      blue: 0,
-    }
-  },
-  watch: {
-    count(newCount) {
-      this.update()
-    },
-  },
-  methods: {
-    update() {
-      if (this.quark) {
-        this.quark.update({
-          bounds: { x: this.boundsX, y: this.boundsY },
-          padding: 100,
-          count: this.count,
-          color: [this.red, this.green, this.blue].join(','),
-        })
-      }
-    },
-  },
-  mounted() {
-    const QA = (window as any).QuarkAnimation
-    const quark = new QA({
-      id: 'canvas',
-    })
-    this.quark = quark
-    this.update()
-    quark.start()
-  },
-})
+	head() {
+		return { script: [{ src: "/quarks.js" }] };
+	},
+	data() {
+		return {
+			quark: null as any,
+			padding: 100,
+			boundsX: 600,
+			boundsY: 600,
+			count: 200,
+			red: 0,
+			green: 0,
+			blue: 0,
+		};
+	},
+	watch: {
+		count(newCount) {
+			this.update();
+		},
+	},
+	methods: {
+		update() {
+			if (this.quark) {
+				this.quark.update({
+					bounds: { x: this.boundsX, y: this.boundsY },
+					padding: 100,
+					count: this.count,
+					color: [this.red, this.green, this.blue].join(","),
+				});
+			}
+		},
+	},
+	mounted() {
+		const QA = (window as any).QuarkAnimation;
+		const quark = new QA({
+			id: "canvas",
+		});
+		this.quark = quark;
+		this.update();
+		quark.start();
+	},
+});
 </script>
 
 <style lang="sass">

@@ -81,49 +81,49 @@ Previously, I was Staff Software Engineer and Tech Lead for
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import Vue from "vue";
 // @ts-ignore
-import Icon from '../components/Icon'
+import Icon from "../components/Icon";
 // @ts-ignore
-import Svgs from '../components/Svgs'
+import Svgs from "../components/Svgs";
 
 export default Vue.extend({
-  computed: {
-    isMainPage() {
-      return this.$route.path === '/'
-    },
-  },
-  data() {
-    const mail = 'peter.wielander@gmail.com'
-    return {
-      title: 'Peter Wielander',
-      description:
-        'Language learning, machine learning, and everything in between.',
-      footer: "Thanks for dropping by, you're welcome anytime.",
-      mail,
-      links: [
-        {
-          slug: 'mail',
-          name: 'Mail',
-          href: 'mailto:' + mail,
-          label: 'My email address',
-        },
-        {
-          slug: 'github',
-          name: 'Github',
-          href: 'https://github.com/VaguelySerious',
-          label: 'My github profile',
-        },
-        {
-          slug: 'linkedin',
-          name: 'LinkedIn',
-          href: 'https://www.linkedin.com/in/peter-wielander/',
-          label: 'My LinkedIn account',
-        },
-      ],
-    }
-  },
-})
+	computed: {
+		isMainPage() {
+			return this.$route.path === "/";
+		},
+	},
+	data() {
+		const mail = "peter.wielander@gmail.com";
+		return {
+			title: "Peter Wielander",
+			description:
+				"Language learning, machine learning, and everything in between.",
+			footer: "Thanks for dropping by, you're welcome anytime.",
+			mail,
+			links: [
+				{
+					slug: "mail",
+					name: "Mail",
+					href: "mailto:" + mail,
+					label: "My email address",
+				},
+				{
+					slug: "github",
+					name: "Github",
+					href: "https://github.com/VaguelySerious",
+					label: "My github profile",
+				},
+				{
+					slug: "linkedin",
+					name: "LinkedIn",
+					href: "https://www.linkedin.com/in/peter-wielander/",
+					label: "My LinkedIn account",
+				},
+			],
+		};
+	},
+});
 </script>
 
 <style lang="sass">

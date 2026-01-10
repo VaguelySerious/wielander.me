@@ -18,69 +18,69 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import { Entry } from 'contentful'
-import { createClient } from '../../plugins/contentful'
-import { BlogPost } from '../../assets/types'
-import marked from 'marked'
-import readingTime from 'reading-time'
+import Vue from "vue";
+import { Entry } from "contentful";
+import { createClient } from "../../plugins/contentful";
+import { BlogPost } from "../../assets/types";
+import marked from "marked";
+import readingTime from "reading-time";
 // @ts-ignore
-import Icon from '../../components/Icon'
+import Icon from "../../components/Icon";
 
-const client = createClient()
+const client = createClient();
 
 export default {
-  asyncData({ env, route, error }: any) {
-    return Promise.all([
-      client.getEntries({
-        content_type: env.CTF_BLOG_POST_TYPE_ID,
-        'fields.slug': route.params.id,
-      }),
-    ]).then(([posts]) => {
-      const post = posts.items[0] as Entry<BlogPost>
-      if (!post) {
-        throw new Error('Post not available')
-      }
-      const description = marked(post.fields.description)
-      const body = marked(post.fields.body || '')
-      return {
-        post,
-        description,
-        body,
-        stats: readingTime(post.fields.body || ''),
-      }
-    })
-  },
-  head() {
-    const post = (this as any).post as Entry<BlogPost>
-    const title = post.fields.title + " | Peter's blog "
-    return {
-      title,
-      meta: [
-        ...['twitter:title'].map((name) => ({
-          name,
-          hid: name,
-          content: title,
-        })),
-        ...['og:title'].map((name) => ({
-          property: name,
-          hid: name,
-          content: title,
-        })),
-        ...['description', 'twitter:description'].map((name) => ({
-          name,
-          hid: name,
-          content: post.fields.description,
-        })),
-        ...['og:description'].map((name) => ({
-          property: name,
-          hid: name,
-          content: post.fields.description,
-        })),
-      ],
-    }
-  },
-}
+	asyncData({ env, route, error }: any) {
+		return Promise.all([
+			client.getEntries({
+				content_type: env.CTF_BLOG_POST_TYPE_ID,
+				"fields.slug": route.params.id,
+			}),
+		]).then(([posts]) => {
+			const post = posts.items[0] as Entry<BlogPost>;
+			if (!post) {
+				throw new Error("Post not available");
+			}
+			const description = marked(post.fields.description);
+			const body = marked(post.fields.body || "");
+			return {
+				post,
+				description,
+				body,
+				stats: readingTime(post.fields.body || ""),
+			};
+		});
+	},
+	head() {
+		const post = (this as any).post as Entry<BlogPost>;
+		const title = post.fields.title + " | Peter's blog ";
+		return {
+			title,
+			meta: [
+				...["twitter:title"].map((name) => ({
+					name,
+					hid: name,
+					content: title,
+				})),
+				...["og:title"].map((name) => ({
+					property: name,
+					hid: name,
+					content: title,
+				})),
+				...["description", "twitter:description"].map((name) => ({
+					name,
+					hid: name,
+					content: post.fields.description,
+				})),
+				...["og:description"].map((name) => ({
+					property: name,
+					hid: name,
+					content: post.fields.description,
+				})),
+			],
+		};
+	},
+};
 </script>
 
 <style lang="sass">
