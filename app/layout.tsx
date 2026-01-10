@@ -88,30 +88,6 @@ export default function RootLayout({
 								<Link className="header-title clickable" href="/">
 									<h1>Peter Wielander</h1>
 								</Link>
-								<h2 className="header-subtitle">
-									<p>
-										I obsess about languages, education, software, AI, movement,
-										self-improvement, economics, physics and frugality. Every
-										month is a different project, every year a different
-										lifetime.
-									</p>
-									<p>
-										During work hours, I'm a Software Engineer at{" "}
-										<a href="https://vercel.com/">Vercel</a>, a core contributor
-										of <a href="https://useworkflow.dev/">Workflow DevKit</a>,
-										and author of{" "}
-										<a href="https://useworkflow.dev/docs/ai">
-											Building Durable Agents
-										</a>
-										. Previously, I was Staff Software Engineer and Tech Lead
-										for{" "}
-										<a href="https://www.minervaproject.com/">
-											Minerva Project
-										</a>
-										's emerging products, helping to make active-learning the
-										norm in higher-ed classrooms.
-									</p>
-								</h2>
 							</div>
 						</header>
 
