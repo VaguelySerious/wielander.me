@@ -15,7 +15,7 @@ export default async function Home() {
 				<p>
 					During work hours, I'm a Software Engineer at{" "}
 					<a href="https://vercel.com/">Vercel</a>, a core contributor of{" "}
-					<a href="https://useworkflow.dev/">Workflow DevKit</a>, and author of{" "}
+					<a href="https://useworkflow.dev/">Workflow SDK</a>, and author of{" "}
 					<a href="https://useworkflow.dev/docs/ai">Building Durable Agents</a>.
 					Previously, I was Staff Software Engineer and Tech Lead for{" "}
 					<a href="https://www.minervaproject.com/">Minerva Project</a>'s
