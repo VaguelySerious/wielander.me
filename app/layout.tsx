@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Icon } from "@/components/Icon";
 import { Svgs } from "@/components/Svgs";
+import { Analytics } from "@vercel/analytics/next";
 import "@/styles/globals.sass";
 
 const title = "Peter's Blog";
@@ -54,6 +55,7 @@ export default function RootLayout({
 			<body>
 				<div className="site">
 					<Svgs />
+					<Analytics />
 					<div className="site-container">
 						<header className="header">
 							<ul className="header-nav">
