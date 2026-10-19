@@ -1,8 +1,9 @@
+import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Icon } from "@/components/Icon";
+import { MailLink } from "@/components/MailLink";
 import { Svgs } from "@/components/Svgs";
-import { Analytics } from "@vercel/analytics/next";
 import "@/styles/globals.sass";
 
 const title = "Peter's Blog";
@@ -25,12 +26,6 @@ export const metadata: Metadata = {
 };
 
 const links = [
-	{
-		slug: "mail",
-		name: "Mail",
-		href: "mailto:peter.wielander@gmail.com",
-		label: "My email address",
-	},
 	{
 		slug: "github",
 		name: "Github",
@@ -69,6 +64,12 @@ export default function RootLayout({
 										<span>Web</span>
 									</Link>
 								</li>
+								<li>
+									<MailLink className="header-link">
+										<Icon name="mail" />
+										<span>Mail</span>
+									</MailLink>
+								</li>
 								{links.map((link) => (
 									<li key={link.href}>
 										<a
@@ -106,6 +107,12 @@ export default function RootLayout({
 										<span className="hidden">Web</span>
 										<Icon name="globe" />
 									</Link>
+								</li>
+								<li>
+									<MailLink className="footer-link">
+										<span className="hidden">Mail</span>
+										<Icon name="mail" />
+									</MailLink>
 								</li>
 								{links.map((link) => (
 									<li key={link.href}>
