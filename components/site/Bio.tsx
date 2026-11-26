@@ -2,9 +2,9 @@
 export function BioLead() {
 	return (
 		<>
-			I obsess about languages, education, software, AI, movement,
-			self-improvement, economics, physics and frugality. Every month is a
-			different project, every year a different lifetime.
+			I obsess over languages and learning, movement and machines, software, AI,
+			physics and frugality. Every month a different project, every year a
+			different lifetime.
 		</>
 	);
 }
