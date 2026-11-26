@@ -17,10 +17,9 @@ export default async function Home() {
 					<a href="https://vercel.com/">Vercel</a>, a core contributor of{" "}
 					<a href="https://useworkflow.dev/">Workflow SDK</a>, and author of{" "}
 					<a href="https://useworkflow.dev/docs/ai">Building Durable Agents</a>.
-					Previously, I was Staff Software Engineer and Tech Lead for{" "}
-					<a href="https://www.minervaproject.com/">Minerva Project</a>'s
-					emerging products, helping to make active-learning the norm in
-					higher-ed classrooms.
+					Previously, I was Staff Software Engineer and Tech Lead for Minerva
+					Project's emerging products, helping to make active-learning the norm
+					in higher-ed classrooms.
 				</p>
 			</h2>
 			<div className="container">

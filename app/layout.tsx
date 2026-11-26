@@ -1,10 +1,5 @@
 import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
-import Link from "next/link";
-import { Icon } from "@/components/Icon";
-import { MailLink } from "@/components/MailLink";
-import { Svgs } from "@/components/Svgs";
-import "@/styles/globals.sass";
 
 const title = "Peter's Blog";
 const description =
@@ -25,21 +20,6 @@ export const metadata: Metadata = {
 	},
 };
 
-const links = [
-	{
-		slug: "github",
-		name: "Github",
-		href: "https://github.com/VaguelySerious",
-		label: "My github profile",
-	},
-	{
-		slug: "linkedin",
-		name: "LinkedIn",
-		href: "https://www.linkedin.com/in/peter-wielander/",
-		label: "My LinkedIn account",
-	},
-];
-
 export default function RootLayout({
 	children,
 }: Readonly<{
@@ -48,92 +28,8 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body>
-				<div className="site">
-					<Svgs />
-					<Analytics />
-					<div className="site-container">
-						<header className="header">
-							<ul className="header-nav">
-								<li>
-									<Link
-										href="/"
-										className="header-link"
-										aria-label="My website"
-									>
-										<Icon name="globe" />
-										<span>Web</span>
-									</Link>
-								</li>
-								<li>
-									<MailLink className="header-link">
-										<Icon name="mail" />
-										<span>Mail</span>
-									</MailLink>
-								</li>
-								{links.map((link) => (
-									<li key={link.href}>
-										<a
-											rel="noopener"
-											href={link.href}
-											className="header-link"
-											target={
-												link.href.startsWith("http") ? "_blank" : undefined
-											}
-											aria-label={link.label}
-										>
-											<Icon name={link.slug} />
-											<span>{link.name}</span>
-										</a>
-									</li>
-								))}
-							</ul>
-							<div>
-								<Link className="header-title clickable" href="/">
-									<h1>Peter Wielander</h1>
-								</Link>
-							</div>
-						</header>
-
-						{children}
-
-						<footer className="footer">
-							<ul className="footer-icons">
-								<li>
-									<Link
-										href="/"
-										className="footer-link"
-										aria-label="My website"
-									>
-										<span className="hidden">Web</span>
-										<Icon name="globe" />
-									</Link>
-								</li>
-								<li>
-									<MailLink className="footer-link">
-										<span className="hidden">Mail</span>
-										<Icon name="mail" />
-									</MailLink>
-								</li>
-								{links.map((link) => (
-									<li key={link.href}>
-										<a
-											rel="noopener"
-											href={link.href}
-											className="footer-link"
-											target={
-												link.href.startsWith("http") ? "_blank" : undefined
-											}
-											aria-label={link.label}
-										>
-											<span className="hidden">{link.name}</span>
-											<Icon name={link.slug} />
-										</a>
-									</li>
-								))}
-							</ul>
-						</footer>
-					</div>
-				</div>
+				{children}
+				<Analytics />
 			</body>
 		</html>
 	);
