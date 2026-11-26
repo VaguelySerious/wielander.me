@@ -1,6 +1,6 @@
-import * as contentful from "contentful";
 import type { Entry } from "contentful";
-import { BlogPost } from "./types";
+import * as contentful from "contentful";
+import type { BlogPost } from "./types";
 
 const config = {
 	space: process.env.CTF_SPACE_ID || "tx3oybxuzvav",

@@ -1,9 +1,11 @@
 import { marked } from "marked";
-import readingTime from "reading-time";
-import Link from "next/link";
-import { Icon } from "@/components/Icon";
-import { getAllPostSlugs, getPostBySlug } from "@/lib/contentful";
 import type { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import readingTime from "reading-time";
+import { SiteFooter, SiteHeader } from "@/components/site/SiteHeader";
+import { getAllPostSlugs, getPostBySlug } from "@/lib/contentful";
+import s from "./post.module.css";
 
 export async function generateStaticParams() {
 	const slugs = await getAllPostSlugs();
@@ -18,7 +20,7 @@ async function getPost(slug: string) {
 	}
 
 	const bodyText = String(post.fields.body || "");
-	const body = marked(bodyText);
+	const body = await marked.parse(bodyText);
 	const stats = readingTime(bodyText);
 
 	return { post, body, stats };
@@ -39,7 +41,7 @@ export async function generateMetadata({
 	}
 
 	const { post } = data;
-	const title = post.fields.title + " | Peter's blog";
+	const title = `${post.fields.title} | Peter's blog`;
 
 	return {
 		title,
@@ -65,29 +67,42 @@ export default async function PostPage({
 	const data = await getPost(slug);
 
 	if (!data) {
-		return <div>Post not found</div>;
+		notFound();
 	}
 
 	const { post, body, stats } = data;
+	const date = String(post.fields.publishDate).slice(0, 10);
 
 	return (
-		<div className="post">
-			<Link href="/" className="post-controls">
-				<Icon name="arrow-left" /> <span>All Posts &amp; Projects</span>
-			</Link>
-			<h1 className="post-title">{post.fields.title}</h1>
-			<div className="post-header">
-				<div className="post-date">
-					{new Date(post.fields.publishDate).toDateString().slice(4)}
-				</div>
-				<div className="post-length">{stats.text}</div>
-			</div>
-			<div className="container">
-				<div
-					className="body"
-					dangerouslySetInnerHTML={{ __html: body as string }}
-				/>
-			</div>
-		</div>
+		<>
+			<SiteHeader compact />
+			<main className={s.wrap}>
+				<article>
+					<Link href="/" className={s.back}>
+						← Writing &amp; projects
+					</Link>
+					<h1 className={s.title}>{post.fields.title}</h1>
+					<div className={s.meta}>
+						<time dateTime={date}>
+							{new Date(`${date}T12:00:00Z`).toLocaleDateString("en-US", {
+								day: "numeric",
+								month: "long",
+								year: "numeric",
+								timeZone: "UTC",
+							})}
+						</time>
+						<span aria-hidden="true">·</span>
+						<span>{stats.text}</span>
+					</div>
+					<div
+						className={s.body}
+						// Post bodies are trusted Markdown authored in Contentful.
+						// biome-ignore lint/security/noDangerouslySetInnerHtml: trusted CMS content
+						dangerouslySetInnerHTML={{ __html: body }}
+					/>
+				</article>
+			</main>
+			<SiteFooter />
+		</>
 	);
 }

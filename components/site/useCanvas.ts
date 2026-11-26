@@ -44,6 +44,8 @@ export function useCanvas(
 	const setupRef = useRef(opts.setup);
 	setupRef.current = opts.setup;
 
+	// Options are read once on mount; draw/setup stay fresh via refs.
+	// biome-ignore lint/correctness/useExhaustiveDependencies: mount-only effect
 	useEffect(() => {
 		const canvas = ref.current;
 		if (!canvas) return;
@@ -156,6 +158,5 @@ export function useCanvas(
 			window.removeEventListener("pointercancel", onUp);
 			document.removeEventListener("pointerleave", onLeave);
 		};
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [ref]);
 }

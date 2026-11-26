@@ -1,4 +1,4 @@
-import { EntrySkeletonType } from "contentful";
+import type { EntrySkeletonType } from "contentful";
 
 export interface BlogPostFields {
 	title: string;

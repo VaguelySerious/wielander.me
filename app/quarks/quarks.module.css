@@ -1,0 +1,60 @@
+.wrap {
+	max-width: var(--wrap);
+	margin: 0 auto;
+	padding: 24px 24px 0;
+}
+.title {
+	font-size: clamp(32px, 5.5vw, 48px);
+	line-height: 1.08;
+	letter-spacing: -0.035em;
+	font-weight: 600;
+	margin: 0 0 14px;
+}
+.intro {
+	color: var(--muted);
+	max-width: 580px;
+	margin: 0 0 28px;
+}
+.intro a {
+	color: var(--fg);
+}
+.controls {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	gap: 12px 24px;
+	margin-bottom: 20px;
+}
+.control {
+	display: grid;
+	grid-template-columns: 64px 1fr 36px;
+	align-items: center;
+	gap: 10px;
+	font-family: var(--font-mono), monospace;
+	font-size: 12px;
+	color: var(--muted);
+}
+.control input {
+	width: 100%;
+	accent-color: var(--accent);
+}
+.control output {
+	text-align: right;
+	color: var(--fg);
+	font-variant-numeric: tabular-nums;
+}
+.stage {
+	border: 1px solid var(--faint);
+	border-radius: 12px;
+	background: var(--card);
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+}
+/* QuarksJS sets an inline CSS size for HiDPI; keep it responsive. */
+.stage canvas {
+	display: block;
+	width: 100% !important;
+	max-width: 600px;
+	height: auto !important;
+	aspect-ratio: 1;
+}

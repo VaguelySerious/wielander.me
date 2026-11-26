@@ -1,4 +1,5 @@
 import { getAllPosts } from "@/lib/contentful";
+import type { BlogPostFields } from "@/lib/types";
 
 export type SiteEntry = {
 	id: string;
@@ -30,7 +31,7 @@ function normalizeUrl(url: string): { href: string; internal: boolean } {
 export async function getEntries(): Promise<SiteEntry[]> {
 	const posts = await getAllPosts();
 	const entries = posts.map((post) => {
-		const f = post.fields as any;
+		const f = post.fields as unknown as BlogPostFields;
 		const date = String(f.publishDate).slice(0, 10);
 		const d = new Date(`${date}T12:00:00Z`);
 		const visit = f.projectUrl ? normalizeUrl(f.projectUrl) : undefined;
@@ -60,20 +61,7 @@ export async function getEntries(): Promise<SiteEntry[]> {
 	return entries.sort((a, b) => b.date.localeCompare(a.date));
 }
 
-export function groupByYear(entries: SiteEntry[]) {
-	const groups = new Map<number, SiteEntry[]>();
-	for (const e of entries) {
-		if (!groups.has(e.year)) groups.set(e.year, []);
-		groups.get(e.year)!.push(e);
-	}
-	return [...groups.entries()];
-}
-
 export const socials = {
 	github: "https://github.com/VaguelySerious",
 	linkedin: "https://www.linkedin.com/in/peter-wielander/",
-};
-
-export const now = {
-	role: "Software Engineer at Vercel",
 };
