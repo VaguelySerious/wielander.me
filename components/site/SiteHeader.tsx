@@ -38,7 +38,6 @@ export function SiteHeader({
 				</nav>
 				{children}
 			</div>
-			{!compact && <p className={s.hint}>Click to add quarks</p>}
 		</header>
 	);
 }
