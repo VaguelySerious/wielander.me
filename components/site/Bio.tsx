@@ -17,8 +17,7 @@ export function BioWork() {
 			<a href="https://useworkflow.dev/">Workflow SDK</a>, and author of{" "}
 			<a href="https://useworkflow.dev/docs/ai">Building Durable Agents</a>.
 			Previously, I was Staff Software Engineer and Tech Lead for Minerva
-			Project's emerging products, helping to make active-learning the norm in
-			higher-ed classrooms.
+			Project's active learning software.
 		</>
 	);
 }
