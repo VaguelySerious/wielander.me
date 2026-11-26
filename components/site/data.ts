@@ -38,6 +38,7 @@ export async function getEntries(): Promise<SiteEntry[]> {
 		const read = f.body ? `/posts/${f.slug}` : undefined;
 		const code = f.githubUrl || undefined;
 		const primaryHref = read || visit?.href || code || "#";
+
 		return {
 			id: post.sys.id,
 			slug: f.slug,

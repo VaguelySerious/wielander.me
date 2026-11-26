@@ -1,10 +1,10 @@
-import { marked } from "marked";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import readingTime from "reading-time";
 import { SiteFooter, SiteHeader } from "@/components/site/SiteHeader";
 import { getAllPostSlugs, getPostBySlug } from "@/lib/contentful";
+import { renderMarkdown } from "@/lib/markdown";
 import s from "./post.module.css";
 
 export async function generateStaticParams() {
@@ -20,7 +20,7 @@ async function getPost(slug: string) {
 	}
 
 	const bodyText = String(post.fields.body || "");
-	const body = await marked.parse(bodyText);
+	const body = renderMarkdown(bodyText);
 	const stats = readingTime(bodyText);
 
 	return { post, body, stats };
@@ -75,6 +75,7 @@ export default async function PostPage({
 
 	return (
 		<>
+			<div className={s.progress} aria-hidden="true" />
 			<SiteHeader compact />
 			<main className={s.wrap}>
 				<article>
